@@ -1,0 +1,278 @@
+<html>
+	<head>
+		<title>Validation's</title>
+	
+		<style>
+		
+		body{
+			background-color:#0040ff;
+		}
+			fieldset {
+				margin-top:2%;
+				background-color:white;
+				width : 25%; 
+				box-shadow: 0 4px 8px 0 rgba(0,0,0,0.8);
+				
+			}
+			
+			.inputTag{
+				width:100%;
+				padding:5px;
+			}
+			label{
+				float: left;
+			}
+			span{
+				float : left;
+			}
+			div.div{
+			float : left;
+			}
+			
+			
+			.buttondesign {
+			
+				width:100%; 
+				padding:10px; 
+				background-color:skyblue; 
+				box-shadow: 0 4px 8px 0 rgba(0,0,0,0.6);
+				border:0px;
+				padding:15px;
+				margin-bottom:15px;
+				margin-left:-25px;
+				margin-right:10px;
+				font-size:25px;
+				font-family: -apple-system, system-ui, BlinkMacSystemFont;
+				
+			}
+			
+		</style>
+	
+	
+		<script>
+			
+			
+			var FirstName = "";
+			var LastName = "";
+			var Username  = "";
+			var Password = "";
+			var Gender = "";
+			var City = "";
+			var isConditionAccept = false;
+			
+			function validate(){
+			
+				if(validateFirstName()){
+					if(validateLastName()){
+						if(validateUsername()){
+							if(validatePassword()){
+								if(validateGender()){
+									if(validateCity()){
+										if(validateCheckBox()){
+											window.alert(" First Name  :  "+FirstName+"\n Last Name : "+LastName+"\n Username : "+Username+" \n Password : "+Password+"\n Gender : "+Gender+"\n City : "+City+"\n isConditionAccept : "+isConditionAccept);
+										}else{return;};
+									}else {return;};
+								}else {return;}
+							}else {return;}
+						}else {return;}
+					}else {return;}
+				}else {return;}
+			}
+				
+			function validateFirstName(){
+				var fname = document.getElementById("id_fname").value;
+				if(fname == ""){
+					window.alert("Please Enter First Name");
+					return false;
+				}else{
+					FirstName = fname;
+					return true;
+				}
+			}
+			
+			function validateLastName(){
+				var lname = document.getElementById("id_lname").value;
+				if(lname == ""){
+					window.alert("Please Enter Last Name");
+					return false;
+				}else{
+				LastName = lname;
+					return true;
+				}
+			}
+			
+			function validateUsername() {
+				
+				var username = document.getElementById("id_username").value;
+				if(username == ""){
+					window.alert("Please Enter Username");
+					return false
+				}else {
+					Username = username;
+					return true;
+				}
+			}
+			
+			function validatePassword(){
+				
+				var pass = document.getElementById("id_password").value;
+				var c_pass = document.getElementById("id_c_password").value;
+				
+				if(pass == "" && c_pass == ""){
+					window.alert("Please Enter Password");
+					return false;
+				}else{
+					var isLower = false;
+					var isUppar = false;
+					var isDigit = false;
+					
+					for(var i = 0; i< pass.length;i++){
+						var ch = pass.charAt(i);
+						if(ch > 'a' && ch < 'z') {
+							isLower = true;
+						}
+						if(ch > 'A' && ch < 'Z'){
+							isUppar = true;
+						}
+						if(ch > '0' && ch < '9'){
+							isDigit = true;
+						}
+					}
+					
+					if(pass != c_pass){
+						window.alert("Password and Confirm Password not matching")
+						return false;
+					}
+					if(pass.length < 8){
+						window.alert("Password Length Should be minimum 8 character Long");
+						return false;
+					}
+					
+					if(isLower== false && isUppar == false && isDigit == false){
+						
+						window.alert("Password should contain 1 UpparCase, 1 LowerCase and 1 Digit");
+						return false;
+					}else{
+						Password = pass;
+						return true;
+					}
+				}
+			}
+				
+			function validateGender(){
+			
+				var gen = document.gender.gen;
+				if(gen[0].checked){
+					Gender = gen[0].value;
+					return true;
+				}else if(gen[1].checked){
+					Gender = gen[1].value;
+					return true;
+				}else{
+					window.alert("Gender is Mandatory");
+					return false;
+				}
+			}
+				
+			function validateCity(){
+				var city = document.getElementById("ddl").value
+				if(city == "Select City"){
+					window.alert("Please Select City");
+					return false
+				}else{
+					City = city; 
+					return true;
+				}
+			}
+				
+			function validateCheckBox(){
+				
+				var isCheck = document.check.id_checkbox;
+				if(isCheck.checked == true){
+					isConditionAccept = true;
+					return true;
+				}else{
+					window.alert("Please Accept our Term And Condition");
+					return false;
+				}
+				
+			}
+				
+		</script>
+	
+	 
+	</head>
+
+	<body>
+	
+	<div align= "center">
+		<fieldset>
+		<p style = "
+			padding:8px;
+			box-shadow: 0 4px 8px 0 rgba(0,0,0,0.6);
+			background-color:skyblue;
+			margin-left:-18px;
+			margin-right:20px;
+			font-size:30px;
+			font-family: -apple-system, system-ui, BlinkMacSystemFont;
+			
+		">Validation's</p>
+			
+			<label>First Name* : </label> <br/>
+			<input type= "text"  name = "fname" id="id_fname" class="inputTag" />
+			<br/><br/>
+			
+			<label>Last Name* : </label><br/>
+			<input type = "text" name = "lname" id = "id_lname" class="inputTag"/>
+			<br/><br/>
+			
+			<label>Username* : </label><br/>
+			<input type = "text" name = "username" id = "id_username" class="inputTag"/>
+			<br/><br/>
+			
+			<label>Password* : </label><br/>
+			<input type = "password" name = "password" id = "id_password" class="inputTag"/>
+			<br/><br/>
+			
+			<label>Confirm Password* : </label><br/>
+			<input type = "password" name = "C_password" id = "id_c_password" class="inputTag"/>
+			<br/><br/>
+			
+			<form name = "gender" margin="0">
+			<label>Gender*  :</label>  
+				<label><input type = "radio"  name = "gen" value = "Male"/> Male </label>
+				<label><input type = "radio" name = "gen" value = "Female"/> Female</label>
+			</form>
+			<br/>
+			
+			<span>
+			<label >City * :  </label>
+			<select id="ddl">
+				<option value = "Select City">Select City</option>
+				<option value = "Mumbai" >Mumbai</option>
+				<option value = "Chennai" >Chennai</option>
+				<option value = "Banglore" >Banglore</option>
+				<option value = "Kolkata" >Kolkata</option>
+			</select>
+			</span>
+			
+			<br/> <br/>
+		
+			<form name = "check"> 
+				<input type = "checkbox" id = "id_checkbox" />
+				I Accept Term & Condition <br/><br/>
+				
+			</form>
+			
+			<input type = "submit" onclick="validate()" class = "buttondesign"/>
+			
+			
+			
+			
+		</fieldset>
+	
+	</div>
+	
+	
+	</body>
+</html>
