@@ -1,20 +1,16 @@
 <html>
 	<head>
 		<title>Validation's</title>
-	
 		<style>
-		
-		body{
-			background-color:#0040ff;
-		}
+			body{
+				background-color:#0040ff;
+			}
 			fieldset {
 				margin-top:2%;
 				background-color:white;
 				width : 25%; 
-				box-shadow: 0 4px 8px 0 rgba(0,0,0,0.8);
-				
+				box-shadow: 0 4px 8px 0 rgba(0,0,0,0.8);		
 			}
-			
 			.inputTag{
 				width:100%;
 				padding:5px;
@@ -25,13 +21,10 @@
 			span{
 				float : left;
 			}
-			div.div{
-			float : left;
+			div.div {
+				float : left;
 			}
-			
-			
 			.buttondesign {
-			
 				width:100%; 
 				padding:10px; 
 				background-color:skyblue; 
@@ -43,15 +36,9 @@
 				margin-right:10px;
 				font-size:25px;
 				font-family: -apple-system, system-ui, BlinkMacSystemFont;
-				
 			}
-			
 		</style>
-	
-	
 		<script>
-			
-			
 			var FirstName = "";
 			var LastName = "";
 			var Username  = "";
@@ -59,7 +46,7 @@
 			var Gender = "";
 			var City = "";
 			var isConditionAccept = false;
-			
+	
 			function validate(){
 			
 				if(validateFirstName()){
@@ -77,7 +64,7 @@
 						}else {return;}
 					}else {return;}
 				}else {return;}
-			}
+			}	// function close
 				
 			function validateFirstName(){
 				var fname = document.getElementById("id_fname").value;
@@ -148,8 +135,7 @@
 						return false;
 					}
 					
-					if(isLower== false && isUppar == false && isDigit == false){
-						
+					if(isLower == false || isUppar == false || isDigit == false){
 						window.alert("Password should contain 1 UpparCase, 1 LowerCase and 1 Digit");
 						return false;
 					}else{
@@ -195,16 +181,11 @@
 					window.alert("Please Accept our Term And Condition");
 					return false;
 				}
-				
 			}
 				
 		</script>
-	
-	 
 	</head>
-
 	<body>
-	
 	<div align= "center">
 		<fieldset>
 		<p style = "
@@ -214,9 +195,7 @@
 			margin-left:-18px;
 			margin-right:20px;
 			font-size:30px;
-			font-family: -apple-system, system-ui, BlinkMacSystemFont;
-			
-		">Validation's</p>
+			font-family: -apple-system, system-ui, BlinkMacSystemFont;">Validation's</p>
 			
 			<label>First Name* : </label> <br/>
 			<input type= "text"  name = "fname" id="id_fname" class="inputTag" />
@@ -261,18 +240,10 @@
 			<form name = "check"> 
 				<input type = "checkbox" id = "id_checkbox" />
 				I Accept Term & Condition <br/><br/>
-				
 			</form>
 			
 			<input type = "submit" onclick="validate()" class = "buttondesign"/>
-			
-			
-			
-			
 		</fieldset>
-	
-	</div>
-	
-	
+		</div>
 	</body>
 </html>
